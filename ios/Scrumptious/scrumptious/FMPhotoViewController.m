@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-#import "SCPhotoViewController.h"
+#import "FMPhotoViewController.h"
 
-@interface SCPhotoViewController ()
+@interface FMPhotoViewController ()
 
 @property (strong, readwrite) UIImage* image;
 
 @end
 
-@implementation SCPhotoViewController
+@implementation FMPhotoViewController
 
 @synthesize confirmCallback = confirmCallback;
 @synthesize imageView = _imageView;

@@ -15,11 +15,11 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "SCViewController.h"
+#import "FMViewController.h"
 
 typedef void(^ConfirmCallback)(id sender, bool confirm);
 
-@interface SCPhotoViewController : UIViewController
+@interface FMPhotoViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (copy, nonatomic) ConfirmCallback confirmCallback;
