@@ -19,6 +19,7 @@
 #import "FMLoginViewController.h"
 #import "FMPhotoViewController.h"
 #import "FMProtocols.h"
+#import "FMEvent.h"
 #import <AddressBook/AddressBook.h>
 #import "TargetConditionals.h"
 
@@ -50,6 +51,18 @@
 @property (strong, nonatomic) FMPhotoViewController *photoViewController;
 @property (nonatomic) CGRect popoverFromRect;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
+
+//########################################################################
+
+#pragma mark -
+#pragma mark My Properties
+
+@property (strong, nonatomic) NSArray *allEvents;
+
+
+#pragma mark -
+
+//########################################################################
 
 - (IBAction)announce:(id)sender;
 - (void)populateUserDetails;
@@ -83,6 +96,19 @@
 @synthesize settingsViewController = _settingsViewController;
 @synthesize mealTypes = _mealTypes;
 @synthesize placeCacheDescriptor = _placeCacheDescriptor;
+
+//########################################################################
+
+#pragma mark -
+#pragma mark My Synthetize
+
+@synthesize allEvents = _allEvents;
+
+
+#pragma mark -
+
+//########################################################################
+
 
 #pragma mark open graph
 
@@ -360,6 +386,34 @@
     self.announceButton.enabled = (self.selectedMeal != nil);
 }
 
+- (void)requestEventsImages {
+    
+    NSLog(@"request");
+    
+    for (FMEvent *event in self.allEvents) {
+        
+        NSLog(@"new");
+        
+        NSLog(@"%@",[NSString stringWithFormat:@"%@/picture",event.id]);
+        
+        [[FBRequest requestForGraphPath:[NSString stringWithFormat:@"%@/picture",event.id] ] startWithCompletionHandler:
+         ^(FBRequestConnection *connection, NSDictionary<FBGraphObject> *result, NSError *error) {
+             
+             NSLog(@"Data pic %@",[result objectForKey:@"data"]);
+             
+             NSString *url = [[[result objectForKey:@"data"] objectForKey:@"url"] stringValue];
+             
+             event.image = [UIImage imageWithData:
+                            [NSData dataWithContentsOfURL:
+                             [NSURL URLWithString:url]]];
+             
+             NSLog(@"URL %@",url);
+         }];
+    }
+    
+    [self.menuTableView reloadData];
+}
+
 // FBSample logic
 // Displays the user's name and profile picture so they are aware of the Facebook
 // identity they are logged in as.
@@ -375,7 +429,29 @@
         [[FBRequest requestForGraphPath:@"me/events"] startWithCompletionHandler:
          ^(FBRequestConnection *connection, NSDictionary<FBGraphObject> *result, NSError *error) {
              if (!error) {
-                 NSLog(@"%@",result);
+                 
+                 NSLog(@"Data %@",[result objectForKey:@"data"]);
+                 
+                 NSMutableArray *tmp = [[NSMutableArray alloc] init];
+                 
+                 for (id i in [result objectForKey:@"data"]) {
+                     
+                     FMEvent *event = [[FMEvent alloc] init];
+                     
+                     event.name = [i objectForKey:@"name"];
+                     event.startTime = [i objectForKey:@"startTime"];
+                     event.endTime = [i objectForKey:@"endTime"];
+                     event.location = [i objectForKey:@"location"];
+                     event.id = [i objectForKey:@"id"];
+                     
+                     [tmp addObject:event];
+                 }
+                 
+                 self.allEvents = [[NSArray alloc] initWithArray:tmp];
+                 
+                 [self.menuTableView reloadData];
+                 
+                 [self performSelectorInBackground:@selector(requestEventsImages) withObject:nil];
              }
          }];
     }
@@ -475,7 +551,8 @@
 #pragma mark UITableViewDataSource methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    NSLog(@"%d",[self.allEvents count]);
+    return [self.allEvents count];
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -500,34 +577,40 @@
         cell.detailTextLabel.clipsToBounds = YES;
     }
     
-    switch (indexPath.row) {
-        case 0:
-            cell.textLabel.text = @"What are you eating?";
-            cell.detailTextLabel.text = @"Select one";
-            cell.imageView.image = [UIImage imageNamed:@"action-eating.png"];
-            break;
-            
-        case 1:
-            cell.textLabel.text = @"Where are you?";
-            cell.detailTextLabel.text = @"Select one";
-            cell.imageView.image = [UIImage imageNamed:@"action-location.png"];
-            break;
-            
-        case 2:
-            cell.textLabel.text = @"With whom?";
-            cell.detailTextLabel.text = @"Select friends";
-            cell.imageView.image = [UIImage imageNamed:@"action-people.png"];
-            break;
-            
-        case 3:
-            cell.textLabel.text = @"Got a picture?";
-            cell.detailTextLabel.text = @"Take one";
-            cell.imageView.image = [UIImage imageNamed:@"action-photo.png"];
-            break;
-            
-        default:
-            break;
-    }
+    FMEvent *event = [self.allEvents objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = event.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@ - %@", event.location, event.startTime, event.endTime];
+    cell.imageView.image = event.image;
+    
+//    switch (indexPath.row) {
+//        case 0:
+//            cell.textLabel.text = @"What are you eating?";
+//            cell.detailTextLabel.text = @"Select one";
+//            cell.imageView.image = [UIImage imageNamed:@"action-eating.png"];
+//            break;
+//            
+//        case 1:
+//            cell.textLabel.text = @"Where are you?";
+//            cell.detailTextLabel.text = @"Select one";
+//            cell.imageView.image = [UIImage imageNamed:@"action-location.png"];
+//            break;
+//            
+//        case 2:
+//            cell.textLabel.text = @"With whom?";
+//            cell.detailTextLabel.text = @"Select friends";
+//            cell.imageView.image = [UIImage imageNamed:@"action-people.png"];
+//            break;
+//            
+//        case 3:
+//            cell.textLabel.text = @"Got a picture?";
+//            cell.detailTextLabel.text = @"Take one";
+//            cell.imageView.image = [UIImage imageNamed:@"action-photo.png"];
+//            break;
+//            
+//        default:
+//            break;
+//    }
 
     return cell;
 }

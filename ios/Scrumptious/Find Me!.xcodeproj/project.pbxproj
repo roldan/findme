@@ -11,6 +11,9 @@
 		5BA315DF15EE8EE800FAB508 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5BA315DE15EE8EE800FAB508 /* FacebookSDKResources.bundle */; };
 		5BA315E115EE8EEE00FAB508 /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5BA315E015EE8EEE00FAB508 /* FBUserSettingsViewResources.bundle */; };
 		5BA315E315EE8EFA00FAB508 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA315E215EE8EFA00FAB508 /* FacebookSDK.framework */; };
+		5BA315EA15EEA45600FAB508 /* FMEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA315E915EEA45600FAB508 /* FMEvent.m */; };
+		5BA315EF15EEADFA00FAB508 /* FMEventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA315ED15EEADFA00FAB508 /* FMEventController.m */; };
+		5BA315F015EEADFA00FAB508 /* FMEventController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BA315EE15EEADFA00FAB508 /* FMEventController.xib */; };
 		846809C1158F85A100F2DBB9 /* action-eating.png in Resources */ = {isa = PBXBuildFile; fileRef = 846809BD158F85A100F2DBB9 /* action-eating.png */; };
 		846809C2158F85A100F2DBB9 /* action-location.png in Resources */ = {isa = PBXBuildFile; fileRef = 846809BE158F85A100F2DBB9 /* action-location.png */; };
 		846809C3158F85A100F2DBB9 /* action-people.png in Resources */ = {isa = PBXBuildFile; fileRef = 846809BF158F85A100F2DBB9 /* action-people.png */; };
@@ -40,6 +43,11 @@
 		5BA315DE15EE8EE800FAB508 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../../../../FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
 		5BA315E015EE8EEE00FAB508 /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBUserSettingsViewResources.bundle; path = ../../../../FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
 		5BA315E215EE8EFA00FAB508 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		5BA315E815EEA45600FAB508 /* FMEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMEvent.h; path = scrumptious/FMEvent.h; sourceTree = SOURCE_ROOT; };
+		5BA315E915EEA45600FAB508 /* FMEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMEvent.m; path = scrumptious/FMEvent.m; sourceTree = SOURCE_ROOT; };
+		5BA315EC15EEADFA00FAB508 /* FMEventController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMEventController.h; path = scrumptious/FMEventController.h; sourceTree = SOURCE_ROOT; };
+		5BA315ED15EEADFA00FAB508 /* FMEventController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMEventController.m; path = scrumptious/FMEventController.m; sourceTree = SOURCE_ROOT; };
+		5BA315EE15EEADFA00FAB508 /* FMEventController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FMEventController.xib; path = scrumptious/FMEventController.xib; sourceTree = SOURCE_ROOT; };
 		846809BD158F85A100F2DBB9 /* action-eating.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-eating.png"; path = "scrumptious/images/action-eating.png"; sourceTree = SOURCE_ROOT; };
 		846809BE158F85A100F2DBB9 /* action-location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-location.png"; path = "scrumptious/images/action-location.png"; sourceTree = SOURCE_ROOT; };
 		846809BF158F85A100F2DBB9 /* action-people.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-people.png"; path = "scrumptious/images/action-people.png"; sourceTree = SOURCE_ROOT; };
@@ -102,6 +110,11 @@
 				B9CD0A86150EA4DD00560A93 /* FMViewController.m */,
 				DDBF24B41590050600BAAB8F /* FMPhotoViewController.h */,
 				DDBF24B51590050600BAAB8F /* FMPhotoViewController.m */,
+				5BA315E815EEA45600FAB508 /* FMEvent.h */,
+				5BA315E915EEA45600FAB508 /* FMEvent.m */,
+				5BA315EC15EEADFA00FAB508 /* FMEventController.h */,
+				5BA315ED15EEADFA00FAB508 /* FMEventController.m */,
+				5BA315EE15EEADFA00FAB508 /* FMEventController.xib */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -253,6 +266,7 @@
 				DDBF24B81590050600BAAB8F /* FMPhotoViewController.xib in Resources */,
 				5BA315DF15EE8EE800FAB508 /* FacebookSDKResources.bundle in Resources */,
 				5BA315E115EE8EEE00FAB508 /* FBUserSettingsViewResources.bundle in Resources */,
+				5BA315F015EEADFA00FAB508 /* FMEventController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +282,8 @@
 				B9CD0A96150EBF5400560A93 /* FMLoginViewController.m in Sources */,
 				DDBF24B71590050600BAAB8F /* FMPhotoViewController.m in Sources */,
 				5B734BE815EE865900C2936F /* FMAppDelegate.m in Sources */,
+				5BA315EA15EEA45600FAB508 /* FMEvent.m in Sources */,
+				5BA315EF15EEADFA00FAB508 /* FMEventController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
