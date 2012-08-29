@@ -169,7 +169,7 @@
              */
             function loadAttendingUsers(eid)
             {
-                actualAttendings = [];
+                actualAttendings = new Array();
                 
                 // Vacío detalle de evento
                 $(".fb_event_play").html("");
