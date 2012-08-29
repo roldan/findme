@@ -16,16 +16,16 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString *const SCSessionStateChangedNotification;
+extern NSString *const FMSessionStateChangedNotification;
 
-@class SCViewController;
+@class FMViewController;
 
 // Scrumptious sample application
 //
 // The purpose of the Scrumptious sample application is to demonstrate a complete real-world
 // application that includes Facebook integration, friend picker, place picker, and Open Graph
 // Action creation and posting.
-@interface SCAppDelegate : UIResponder <UIApplicationDelegate>
+@interface FMAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

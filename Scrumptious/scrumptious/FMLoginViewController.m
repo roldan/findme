@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-#import "SCLoginViewController.h"
-#import "SCAppDelegate.h"
+#import "FMLoginViewController.h"
+#import "FMAppDelegate.h"
 
-@interface SCLoginViewController ()
+@interface FMLoginViewController ()
 
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation SCLoginViewController
+@implementation FMLoginViewController
 
 @synthesize spinner = _spinner;
 @synthesize loginButton = _loginButton;
@@ -36,7 +36,7 @@
     
     // FBSample logic
     // The user has initiated a login, so call the openSession method.
-    SCAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    FMAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     [appDelegate openSessionWithAllowLoginUI:YES];
 }
 

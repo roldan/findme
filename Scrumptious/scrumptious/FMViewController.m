@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-#import "SCViewController.h"
-#import "SCAppDelegate.h"
-#import "SCLoginViewController.h"
-#import "SCPhotoViewController.h"
-#import "SCProtocols.h"
+#import "FMViewController.h"
+#import "FMAppDelegate.h"
+#import "FMLoginViewController.h"
+#import "FMPhotoViewController.h"
+#import "FMProtocols.h"
 #import <AddressBook/AddressBook.h>
 #import "TargetConditionals.h"
 
-@interface SCViewController() < UITableViewDataSource, 
+@interface FMViewController() < UITableViewDataSource,
                                 UIImagePickerControllerDelegate,
                                 FBFriendPickerDelegate,
                                 UINavigationControllerDelegate,
@@ -47,7 +47,7 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) FBCacheDescriptor *placeCacheDescriptor;
 @property (strong, nonatomic) UIPopoverController *popover;
-@property (strong, nonatomic) SCPhotoViewController *photoViewController;
+@property (strong, nonatomic) FMPhotoViewController *photoViewController;
 @property (nonatomic) CGRect popoverFromRect;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 
@@ -55,7 +55,7 @@
 - (void)populateUserDetails;
 - (void)updateSelections;
 - (void)updateCellIndex:(int)index withSubtitle:(NSString *)subtitle;
-- (id<SCOGMeal>)mealObjectForMeal:(NSString *)meal;
+- (id<FMOGMeal>)mealObjectForMeal:(NSString *)meal;
 - (void)postPhotoThenOpenGraphAction;
 - (void)postOpenGraphActionWithPhotoURL:(NSString *)photoID;
 - (void)centerAndShowActivityIndicator;
@@ -63,7 +63,7 @@
 
 @end
 
-@implementation SCViewController
+@implementation FMViewController
 @synthesize userNameLabel = _userNameLabel;
 @synthesize userProfileImage = _userProfileImage;
 @synthesize selectedPlace = _selectedPlace;
@@ -89,11 +89,11 @@
 
 // FBSample logic
 // This is a helper function that returns an FBGraphObject representing a meal
-- (id<SCOGMeal>)mealObjectForMeal:(NSString *)meal {
+- (id<FMOGMeal>)mealObjectForMeal:(NSString *)meal {
     
     // We create an FBGraphObject object, but we can treat it as an SCOGMeal with typed
     // properties, etc. See <FacebookSDK/FBGraphObject.h> for more details.
-    id<SCOGMeal> result = (id<SCOGMeal>)[FBGraphObject graphObject];
+    id<FMOGMeal> result = (id<FMOGMeal>)[FBGraphObject graphObject];
     
     // Give it a URL of sample data that contains the object's name, title, description, and body.
     // These OG object URLs were created using the edit open graph feature of the graph tool
@@ -122,10 +122,10 @@
 // Creates the Open Graph Action with an optional photo URL.
 - (void)postOpenGraphActionWithPhotoURL:(NSString *)photoURL {
     // First create the Open Graph meal object for the meal we ate.
-    id<SCOGMeal> mealObject = [self mealObjectForMeal:self.selectedMeal];
+    id<FMOGMeal> mealObject = [self mealObjectForMeal:self.selectedMeal];
     
     // Now create an Open Graph eat action with the meal, our location, and the people we were with.
-    id<SCOGEatMealAction> action = (id<SCOGEatMealAction>)[FBGraphObject graphObject];
+    id<FMOGEatMealAction> action = (id<FMOGEatMealAction>)[FBGraphObject graphObject];
     action.meal = mealObject;
     if (self.selectedPlace) {
         // FBSample logic
@@ -244,8 +244,8 @@
                   editingInfo:(NSDictionary *)editingInfo {
     
     if (!self.photoViewController) {
-        __block SCViewController *myself = self;
-        self.photoViewController = [[SCPhotoViewController alloc]initWithNibName:@"SCPhotoViewController" bundle:nil image:image];
+        __block FMViewController *myself = self;
+        self.photoViewController = [[FMPhotoViewController alloc]initWithNibName:@"FMPhotoViewController" bundle:nil image:image];
         self.photoViewController.confirmCallback = ^(id sender, bool confirm) {
             if(confirm) {
                 myself.selectedPhoto = image;
@@ -413,7 +413,7 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(sessionStateChanged:) 
-                                                 name:SCSessionStateChangedNotification
+                                                 name:FMSessionStateChangedNotification
                                                object:nil];
 }
 

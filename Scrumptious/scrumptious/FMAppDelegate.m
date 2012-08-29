@@ -15,22 +15,22 @@
  */
 
 #import <FacebookSDK/FacebookSDK.h>
-#import "SCAppDelegate.h"
-#import "SCViewController.h"
-#import "SCLoginViewController.h"
+#import "FMAppDelegate.h"
+#import "FMViewController.h"
+#import "FMLoginViewController.h"
 
-NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:SCSessionStateChangedNotification";
+NSString *const FMSessionStateChangedNotification = @"com.facebook.Scrumptious:SCSessionStateChangedNotification";
 
-@interface SCAppDelegate ()
+@interface FMAppDelegate ()
 
 @property (strong, nonatomic) UINavigationController *navController;
-@property (strong, nonatomic) SCViewController *mainViewController;
+@property (strong, nonatomic) FMViewController *mainViewController;
 
 - (void)showLoginView;
 
 @end
 
-@implementation SCAppDelegate
+@implementation FMAppDelegate
 
 @synthesize window = _window;
 @synthesize mainViewController = _mainViewController;
@@ -47,12 +47,12 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     // If the login screen is not already displayed, display it. If the login screen is displayed, then
     // getting back here means the login in progress did not successfully complete. In that case,
     // notify the login view so it can update its UI appropriately.
-    if (![modalViewController isKindOfClass:[SCLoginViewController class]]) {
-        SCLoginViewController* loginViewController = [[SCLoginViewController alloc]initWithNibName:@"SCLoginViewController" 
+    if (![modalViewController isKindOfClass:[FMLoginViewController class]]) {
+        FMLoginViewController* loginViewController = [[FMLoginViewController alloc]initWithNibName:@"FMLoginViewController"
                                                                                             bundle:nil];
         [topViewController presentModalViewController:loginViewController animated:NO];
     } else {
-        SCLoginViewController* loginViewController = (SCLoginViewController*)modalViewController;
+        FMLoginViewController* loginViewController = (FMLoginViewController*)modalViewController;
         [loginViewController loginFailed];
     }
 }
@@ -68,14 +68,14 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     switch (state) {
         case FBSessionStateOpen: {
                 UIViewController *topViewController = [self.navController topViewController];
-                if ([[topViewController modalViewController] isKindOfClass:[SCLoginViewController class]]) {
+                if ([[topViewController modalViewController] isKindOfClass:[FMLoginViewController class]]) {
                     [topViewController dismissModalViewControllerAnimated:YES];
                 }
                 
                 // FBSample logic
                 // Pre-fetch and cache the friends for the friend picker as soon as possible to improve
                 // responsiveness when the user tags their friends.
-                FBCacheDescriptor *cacheDescriptor = [FBFriendPickerViewController cacheDescriptor];
+                FBCacheDeFMriptor *cacheDescriptor = [FBFriendPickerViewController cacheDescriptor];
                 [cacheDescriptor prefetchAndCacheForSession:session];
             }
             break;
@@ -93,7 +93,7 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
             break;
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:SCSessionStateChangedNotification 
+    [[NSNotificationCenter defaultCenter] postNotificationName:FMSessionStateChangedNotification 
                                                         object:session];
     
     if (error) {
@@ -151,7 +151,7 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     [FBProfilePictureView class];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.mainViewController = [[SCViewController alloc] initWithNibName:@"SCViewController" bundle:nil];
+    self.mainViewController = [[FMViewController alloc] initWithNibName:@"FMViewController" bundle:nil];
     self.navController = [[UINavigationController alloc]initWithRootViewController:self.mainViewController];
     self.window.rootViewController = self.navController;
     
