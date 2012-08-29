@@ -189,6 +189,9 @@
                         
                         exists(value.id, function(data)
                         {
+                            console.log(value.id + "  " + uid);
+                            
+                            
                             if(data.exists == true)
                             {
                                 actualAttendings.push(data.id);
