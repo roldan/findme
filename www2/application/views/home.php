@@ -112,9 +112,11 @@
              */
             function loadUserData(uid)
             {
-                $("#fb_user_data")
-                    .append("<img width='40' src='https://graph.facebook.com/" + uid + "/picture' />")
-                    .append("<h3>" + response.name + "</h3>");
+                FB.api('/' + uid, function(response) {
+                    $("#fb_user_data")
+                        .append("<img width='40' src='https://graph.facebook.com/" + uid + "/picture' />")
+                        .append("<h3>" + response.name + "</h3>");
+                });
                 
                 $("#fb_user_data").show();
             }
