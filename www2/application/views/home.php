@@ -183,6 +183,8 @@
                 {
                     attending_users = r1.data;
                     
+                    console.log(attending_users);
+                    
                     $.each(attending_users, function(index, value)
                     {
                         exists(value.id, function(data)
