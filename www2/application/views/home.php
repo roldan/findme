@@ -67,7 +67,7 @@
                         uid = response.authResponse.userID;
                         accessToken = response.authResponse.accessToken;
                         
-                        create(uid);
+                        create(uid, function(){});
                         
                         // Cargo datos de usuario (nombre y perfil)
                         loadUserData(uid);
@@ -98,7 +98,7 @@
                         uid = response.authResponse.userID;
                         accessToken = response.authResponse.accessToken;
                         
-                        create(uid);
+                        create(uid, function() {});
                         
                         /*
                          * Hide fb connect button
@@ -181,13 +181,34 @@
                 // Traigo attendings
                 FB.api('/' + eid + '/attending', function(r1) 
                 {
-                    $.each(r1, function(index, value)
+                    attending_users = r1.data;
+                    
+                    $.each(attending_users, function(index, value)
                     {
-                        // Por cada usuario chequeo si existe en la base y lo guardo en el array
-                        
-                        
-                        $("#event_" + eid + " .fb_event_play").append(value.name + "<br />");
+                        exists(value.id, function(data)
+                        {
+                            if(data.exists == true && data.id != uid)
+                            {
+                                actualAttendings.push(data.id);
+                            }
+                        });
                     });
+                    
+                    var total_validated_attendings = actualAttendings.length;
+                    
+                    if(total_validated_attendings > 0)
+                    {
+                        for(i = 0; i <= total_validated_attendings; i++)
+                        {
+                            $("#event_" + eid + " .fb_event_play").append(value.name + "<br />");
+                        }
+                    }
+                    else
+                    {
+                        $(".event-item a").show();
+                        alert("There is no attending users using Find Me!");
+                    }
+                    
                 });
                 
                 $("#fb_selected_event").show();
