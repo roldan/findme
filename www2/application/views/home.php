@@ -185,8 +185,6 @@
 
                     $.each(attending_users, function(index, value)
                     {
-                        console.log(value + "  " + uid);
-                        
                         exists(value.id, function(data)
                         {
                             console.log(value.id + "  " + uid);
@@ -198,6 +196,8 @@
                             }
                         });
                     });
+                    
+                    console.log(actualAttendings);
                     
                     var total_validated_attendings = actualAttendings.length;
                     
