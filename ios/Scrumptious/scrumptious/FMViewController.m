@@ -20,6 +20,7 @@
 #import "FMPhotoViewController.h"
 #import "FMProtocols.h"
 #import "FMEvent.h"
+#import "FMEventController.h"
 #import <AddressBook/AddressBook.h>
 #import "TargetConditionals.h"
 
@@ -58,6 +59,7 @@
 #pragma mark My Properties
 
 @property (strong, nonatomic) NSArray *allEvents;
+@property (strong, nonatomic) FMEventController *eventController;
 
 
 #pragma mark -
@@ -103,11 +105,19 @@
 #pragma mark My Synthetize
 
 @synthesize allEvents = _allEvents;
+@synthesize eventController = _eventController;
 
 
 #pragma mark -
 
+const NSString *currentId = nil;
+
 //########################################################################
+
++ (NSString *)selectedEventId
+{
+    return [currentId copy];
+}
 
 
 #pragma mark open graph
@@ -514,6 +524,13 @@
     [self.navigationController pushViewController:self.settingsViewController animated:YES];
 }
 
+- (void)gotoIndividualEvent {
+    if (self.eventController == nil) {
+        self.eventController = [[FMEventController alloc] init];
+    }
+    [self.navigationController pushViewController:self.eventController animated:YES];
+}
+
 - (void)viewDidUnload {
     [super viewDidUnload];
     
@@ -551,7 +568,6 @@
 #pragma mark UITableViewDataSource methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"%d",[self.allEvents count]);
     return [self.allEvents count];
 }
 
@@ -582,35 +598,6 @@
     cell.textLabel.text = event.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@ - %@", event.location, event.startTime, event.endTime];
     cell.imageView.image = event.image;
-    
-//    switch (indexPath.row) {
-//        case 0:
-//            cell.textLabel.text = @"What are you eating?";
-//            cell.detailTextLabel.text = @"Select one";
-//            cell.imageView.image = [UIImage imageNamed:@"action-eating.png"];
-//            break;
-//            
-//        case 1:
-//            cell.textLabel.text = @"Where are you?";
-//            cell.detailTextLabel.text = @"Select one";
-//            cell.imageView.image = [UIImage imageNamed:@"action-location.png"];
-//            break;
-//            
-//        case 2:
-//            cell.textLabel.text = @"With whom?";
-//            cell.detailTextLabel.text = @"Select friends";
-//            cell.imageView.image = [UIImage imageNamed:@"action-people.png"];
-//            break;
-//            
-//        case 3:
-//            cell.textLabel.text = @"Got a picture?";
-//            cell.detailTextLabel.text = @"Take one";
-//            cell.imageView.image = [UIImage imageNamed:@"action-photo.png"];
-//            break;
-//            
-//        default:
-//            break;
-//    }
 
     return cell;
 }
@@ -624,109 +611,115 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIViewController *target;
     
-    switch (indexPath.row) {
-        case 0: {
-            // if we don't yet have an array of meal types, create one now
-            if (!self.mealTypes) {
-                self.mealTypes = [NSArray arrayWithObjects:
-                                  @"Cheeseburger", 
-                                  @"Pizza",
-                                  @"Hotdog",
-                                  @"Italian",
-                                  @"French",
-                                  @"Chinese",
-                                  @"Thai",
-                                  @"Indian",
-                                  nil];
-            }
-            self.mealPickerActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select a meal"
-                                                                     delegate:self
-                                                            cancelButtonTitle:nil
-                                                       destructiveButtonTitle:nil
-                                                            otherButtonTitles:nil];
-                                          
-            for( NSString *meal in self.mealTypes) {
-                [self.mealPickerActionSheet addButtonWithTitle:meal]; 
-            }
-            
-            self.mealPickerActionSheet.cancelButtonIndex = [self.mealPickerActionSheet addButtonWithTitle:@"Cancel"];
-            
-            [self.mealPickerActionSheet showInView:self.view];
-            return;
-        }
-        
-        case 1: {
-            FBPlacePickerViewController *placePicker = [[FBPlacePickerViewController alloc] init];
-            
-            placePicker.title = @"Select a restaurant";
-
-            // SIMULATOR BUG:
-            // See http://stackoverflow.com/questions/7003155/error-server-did-not-accept-client-registration-68
-            // at times the simulator fails to fetch a location; when that happens rather than fetch a
-            // a meal near 0,0 -- let's see if we can find something good in Paris
-            if (self.placeCacheDescriptor == nil) {
-                [self setPlaceCacheDescriptorForCoordinates:CLLocationCoordinate2DMake(48.857875, 2.294635)];
-            }
-            
-            [placePicker configureUsingCachedDescriptor:self.placeCacheDescriptor];
-            [placePicker loadData];
-            [placePicker presentModallyFromViewController:self
-                                                 animated:YES
-                                                  handler:^(FBViewController *sender, BOOL donePressed) {
-                                                      if (donePressed) {
-                                                          self.selectedPlace = placePicker.selection;
-                                                          [self updateSelections];
-                                                      }
-                                                  }];
-            return;
-        }
-            
-        case 2: {
-            FBFriendPickerViewController *friendPicker = [[FBFriendPickerViewController alloc] init];
-            
-            // Set up the friend picker to sort and display names the same way as the
-            // iOS Address Book does.
-            
-            // Need to call ABAddressBookCreate in order for the next two calls to do anything.
-            ABAddressBookCreate();
-            ABPersonSortOrdering sortOrdering = ABPersonGetSortOrdering();
-            ABPersonCompositeNameFormat nameFormat = ABPersonGetCompositeNameFormat();
-            
-            friendPicker.sortOrdering = (sortOrdering == kABPersonSortByFirstName) ? FBFriendSortByFirstName : FBFriendSortByLastName;
-            friendPicker.displayOrdering = (nameFormat == kABPersonCompositeNameFormatFirstNameFirst) ? FBFriendDisplayByFirstName : FBFriendDisplayByLastName;
-            
-            [friendPicker loadData];
-            [friendPicker presentModallyFromViewController:self
-                                                  animated:YES
-                                                   handler:^(FBViewController *sender, BOOL donePressed) {
-                                                       if (donePressed) {
-                                                           self.selectedFriends = friendPicker.selection;
-                                                           [self updateSelections];
-                                                       }
-                                                   }];
-            return;
-        }
-            
-        case 3:            
-            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-                self.popoverFromRect = [tableView rectForRowAtIndexPath:indexPath];
-            }
-            if(!self.imagePickerActionSheet) {
-                self.imagePickerActionSheet = [[UIActionSheet alloc] initWithTitle:@""
-                                                                          delegate:self
-                                                                 cancelButtonTitle:@"Cancel"
-                                                            destructiveButtonTitle:nil
-                                                                 otherButtonTitles:@"Take Photo", @"Choose Existing", nil];
-            }
-            
-            [self.imagePickerActionSheet showInView:self.view];
-            // Return rather than execute below code
-            return;
-    }
+    currentId = [[self.allEvents objectAtIndex:indexPath.row] id];
     
-    [self.navigationController pushViewController:target animated:YES];
+//    UIViewController *target;
+    
+    /*
+//    switch (indexPath.row) {
+//        case 0: {
+//            // if we don't yet have an array of meal types, create one now
+//            if (!self.mealTypes) {
+//                self.mealTypes = [NSArray arrayWithObjects:
+//                                  @"Cheeseburger", 
+//                                  @"Pizza",
+//                                  @"Hotdog",
+//                                  @"Italian",
+//                                  @"French",
+//                                  @"Chinese",
+//                                  @"Thai",
+//                                  @"Indian",
+//                                  nil];
+//            }
+//            self.mealPickerActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select a meal"
+//                                                                     delegate:self
+//                                                            cancelButtonTitle:nil
+//                                                       destructiveButtonTitle:nil
+//                                                            otherButtonTitles:nil];
+//                                          
+//            for( NSString *meal in self.mealTypes) {
+//                [self.mealPickerActionSheet addButtonWithTitle:meal]; 
+//            }
+//            
+//            self.mealPickerActionSheet.cancelButtonIndex = [self.mealPickerActionSheet addButtonWithTitle:@"Cancel"];
+//            
+//            [self.mealPickerActionSheet showInView:self.view];
+//            return;
+//        }
+//        
+//        case 1: {
+//            FBPlacePickerViewController *placePicker = [[FBPlacePickerViewController alloc] init];
+//            
+//            placePicker.title = @"Select a restaurant";
+//
+//            // SIMULATOR BUG:
+//            // See http://stackoverflow.com/questions/7003155/error-server-did-not-accept-client-registration-68
+//            // at times the simulator fails to fetch a location; when that happens rather than fetch a
+//            // a meal near 0,0 -- let's see if we can find something good in Paris
+//            if (self.placeCacheDescriptor == nil) {
+//                [self setPlaceCacheDescriptorForCoordinates:CLLocationCoordinate2DMake(48.857875, 2.294635)];
+//            }
+//            
+//            [placePicker configureUsingCachedDescriptor:self.placeCacheDescriptor];
+//            [placePicker loadData];
+//            [placePicker presentModallyFromViewController:self
+//                                                 animated:YES
+//                                                  handler:^(FBViewController *sender, BOOL donePressed) {
+//                                                      if (donePressed) {
+//                                                          self.selectedPlace = placePicker.selection;
+//                                                          [self updateSelections];
+//                                                      }
+//                                                  }];
+//            return;
+//        }
+//            
+//        case 2: {
+//            FBFriendPickerViewController *friendPicker = [[FBFriendPickerViewController alloc] init];
+//            
+//            // Set up the friend picker to sort and display names the same way as the
+//            // iOS Address Book does.
+//            
+//            // Need to call ABAddressBookCreate in order for the next two calls to do anything.
+//            ABAddressBookCreate();
+//            ABPersonSortOrdering sortOrdering = ABPersonGetSortOrdering();
+//            ABPersonCompositeNameFormat nameFormat = ABPersonGetCompositeNameFormat();
+//            
+//            friendPicker.sortOrdering = (sortOrdering == kABPersonSortByFirstName) ? FBFriendSortByFirstName : FBFriendSortByLastName;
+//            friendPicker.displayOrdering = (nameFormat == kABPersonCompositeNameFormatFirstNameFirst) ? FBFriendDisplayByFirstName : FBFriendDisplayByLastName;
+//            
+//            [friendPicker loadData];
+//            [friendPicker presentModallyFromViewController:self
+//                                                  animated:YES
+//                                                   handler:^(FBViewController *sender, BOOL donePressed) {
+//                                                       if (donePressed) {
+//                                                           self.selectedFriends = friendPicker.selection;
+//                                                           [self updateSelections];
+//                                                       }
+//                                                   }];
+//            return;
+//        }
+//            
+//        case 3:            
+//            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+//                self.popoverFromRect = [tableView rectForRowAtIndexPath:indexPath];
+//            }
+//            if(!self.imagePickerActionSheet) {
+//                self.imagePickerActionSheet = [[UIActionSheet alloc] initWithTitle:@""
+//                                                                          delegate:self
+//                                                                 cancelButtonTitle:@"Cancel"
+//                                                            destructiveButtonTitle:nil
+//                                                                 otherButtonTitles:@"Take Photo", @"Choose Existing", nil];
+//            }
+//            
+//            [self.imagePickerActionSheet showInView:self.view];
+//            // Return rather than execute below code
+//            return;
+//    }*/
+    
+    [self gotoIndividualEvent];
+    
+//    [self.navigationController pushViewController:target animated:YES];
 }
 
 #pragma mark -
