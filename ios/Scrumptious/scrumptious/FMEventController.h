@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FMEventController : UIViewController
+@interface FMEventController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UITableView *myTableView;
 
 @end
