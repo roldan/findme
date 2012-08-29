@@ -183,13 +183,11 @@
                 {
                     attending_users = r1.data;
                     
-                    console.log(attending_users);
-                    
                     $.each(attending_users, function(index, value)
                     {
                         exists(value.id, function(data)
                         {
-                            if(data.exists == true && data.id != uid)
+                            if(data.exists == true && value.id != uid)
                             {
                                 actualAttendings.push(data.id);
                             }
