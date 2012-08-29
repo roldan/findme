@@ -37,6 +37,16 @@
                     cookie     : true, // enable cookies to allow the server to access the session
                     xfbml      : true  // parse XFBML
                 });
+                
+                /*
+                 * Check user status
+                 */
+                FB.getLoginStatus(function(response) {
+                    if (response.status === 'connected') 
+                    {
+                        $("#fb-connect").hide();
+                    }
+                });
             };
             // Load the SDK Asynchronously
             (function(d){
@@ -46,16 +56,6 @@
                 js.src = "//connect.facebook.net/en_US/all.js";
                 ref.parentNode.insertBefore(js, ref);
             }(document));
-            
-            /*
-             * Check user status
-             */
-            FB.getLoginStatus(function(response) {
-                if (response.status === 'connected') 
-                {
-                    $("#fb-connect").hide();
-                }
-            });
             
             /*
              * FB Connect button
