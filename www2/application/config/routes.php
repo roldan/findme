@@ -37,10 +37,15 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+$route ['users/check'] = "users/check";
+$route ['users/create'] = "users/create";
+$route ['users/addPoints'] = "users/addPoints";
+$route ['users/exists'] = "users/exists";
+$route ['users/get'] = "users/check";
 
+$route['blog/joe'] = "blogs/users/34";
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
-
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

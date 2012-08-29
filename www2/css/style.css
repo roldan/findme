@@ -1,3 +1,16 @@
 #fb-connect {
     cursor: pointer;
 }
+
+#fb_events ul {
+    list-style: none;
+}
+
+
+#fb_events ul li img {
+    margin-right: 10px
+}
+
+#fb_events ul li {
+    padding-bottom: 10px;
+}
