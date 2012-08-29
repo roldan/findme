@@ -30,6 +30,9 @@
         <script type="text/javascript" src="/js/bootstrap.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
         <script type="text/javascript">
+            
+            var uid, accessToken;
+            
             window.fbAsyncInit = function() {
                 FB.init({
                     appId      : '414395191956343', // App ID
@@ -44,7 +47,15 @@
                 FB.getLoginStatus(function(response) {
                     if (response.status === 'connected') 
                     {
+                        // Oculto botón
                         $("#fb-connect").hide();
+                        
+                        // Seteo variables
+                        uid = response.authResponse.userID;
+                        accessToken = response.authResponse.accessToken;
+                        
+                        // Cargo eventos del usuario
+                        loadUserEvents(uid);
                     }
                 });
             };
@@ -66,8 +77,8 @@
                 {
                     if (response.status === 'connected') 
                     {
-                        var uid = response.authResponse.userID;
-                        var accessToken = response.authResponse.accessToken;
+                        uid = response.authResponse.userID;
+                        accessToken = response.authResponse.accessToken;
                         
                         /*
                          * Hide fb connect button
