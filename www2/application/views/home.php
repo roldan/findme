@@ -182,12 +182,14 @@
                 FB.api('/' + eid + '/attending', function(r1) 
                 {
                     attending_users = r1.data;
-                    
+
                     $.each(attending_users, function(index, value)
                     {
+                        console.log(value + "  " + uid);
+                        
                         exists(value.id, function(data)
                         {
-                            if(data.exists == true && value.id != uid)
+                            if(data.exists == true)
                             {
                                 actualAttendings.push(data.id);
                             }
