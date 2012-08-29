@@ -187,14 +187,9 @@
                     {
                         exists(value.id, function(data)
                         {
-                            console.log(value.id + "  " + uid);
-                            
-                            console.log(data);
-                            
                             if(data.exists == true)
                             {
-                                console.log("entro");
-                                actualAttendings.push(data.id);
+                                actualAttendings.push(value.id);
                             }
                         });
                     });
