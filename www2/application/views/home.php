@@ -106,16 +106,15 @@
              * Load user events
              */
             function loadUserEvents(uid)
-            {               
-                FB.api(
-                {
-                    method: 'fql.query',
-                    query: 'SELECT uid, first_name, last_name FROM user WHERE uid = ' + uid
-                },
-                function(data) {
-                    console.log(data);
-                }
-            );
+            {
+                FB.api('/' + uid + '/events', function(response) {
+                    var events = response.data;
+                    
+                    $.each(events, function(index, value)
+                    {
+                        $("#fb_events ul").append("<li>" + value.name + "</li>");
+                    });
+                });
             }
             
         </script>
