@@ -8,14 +8,24 @@
         <link rel="stylesheet" type="text/css" media="screen" href="/css/style.css" />
     </head>
     <body>
+
+        <div id="fb-root"></div>
+
         <div class="container">
 
             <h1>Find Me!</h1>
+
             <p>Welcome to Find Me! Connect with Facebook to start!</p>
 
             <img id="fb-connect" src="/images/fb_connect.png" />
 
-            <div id="fb-root"></div>
+            <div style="display: none;" id="fb_events">
+                <ul>
+
+                </ul>
+            </div>
+
+
         </div>
         <script type="text/javascript" src="/js/bootstrap.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
@@ -37,25 +47,60 @@
                 ref.parentNode.insertBefore(js, ref);
             }(document));
             
+            /*
+             * Check user status
+             */
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') 
+                {
+                    $("#fb-connect").hide();
+                }
+            });
+            
+            /*
+             * FB Connect button
+             */
             $("#fb-connect").click(function(e)
             {
-                FB.login(function(response) {
-               
-                    if (response.status === 'connected') {
+                FB.login(function(response) 
+                {
+                    if (response.status === 'connected') 
+                    {
                         var uid = response.authResponse.userID;
                         var accessToken = response.authResponse.accessToken;
                         
-                        alert(uid);
+                        /*
+                         * Hide fb connect button
+                         */
+                        $("#fb-connect").hide();
                         
-                    } else if (response.status === 'not_authorized') {
-                        // the user is logged in to Facebook, 
-                        // but has not authenticated your app
-                    } else {
-                        // the user isn't logged in to Facebook.
+                        /*
+                         * TODO: Valido en servidor, y obtengo hash
+                         */ 
+                        
+                        /*
+                         * Cargo eventos
+                         */
+                        loadUserEvents(uid);
+                        
+                    } else 
+                    {
+                        alert("Could not connect with Facebook");
                     }
                
                 }, {scope: 'user_events,publish_actions'});
             });
+            
+            /*
+             * Load user events
+             */
+            function loadUserEvents(uid)
+            {
+                FB.api('/' + uid + '/events', function(response) {
+                    console.log(response);
+                });
+            }
+            
         </script>
     </body>
 </html>
