@@ -13,7 +13,7 @@
 
         <div class="container">
 
-            <h1>Find Me!</h1>
+            <img src="/images/logo.jpg" />
 
             <p>Welcome to Find Me! Connect with Facebook to start!</p>
 
