@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B9CD0A6E150EA4DD00560A93"
-               BuildableName = "Scrumptious.app"
-               BlueprintName = "Scrumptious"
-               ReferencedContainer = "container:Scrumptious.xcodeproj">
+               BuildableName = "Find Me!.app"
+               BlueprintName = "Find Me!"
+               ReferencedContainer = "container:Find Me!.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B9CD0A6E150EA4DD00560A93"
-            BuildableName = "Scrumptious.app"
-            BlueprintName = "Scrumptious"
-            ReferencedContainer = "container:Scrumptious.xcodeproj">
+            BuildableName = "Find Me!.app"
+            BlueprintName = "Find Me!"
+            ReferencedContainer = "container:Find Me!.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B9CD0A6E150EA4DD00560A93"
-            BuildableName = "Scrumptious.app"
-            BlueprintName = "Scrumptious"
-            ReferencedContainer = "container:Scrumptious.xcodeproj">
+            BuildableName = "Find Me!.app"
+            BlueprintName = "Find Me!"
+            ReferencedContainer = "container:Find Me!.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B9CD0A6E150EA4DD00560A93"
-            BuildableName = "Scrumptious.app"
-            BlueprintName = "Scrumptious"
-            ReferencedContainer = "container:Scrumptious.xcodeproj">
+            BuildableName = "Find Me!.app"
+            BlueprintName = "Find Me!"
+            ReferencedContainer = "container:Find Me!.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

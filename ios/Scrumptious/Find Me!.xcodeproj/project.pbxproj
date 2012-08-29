@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		5B734BE815EE865900C2936F /* FMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B734BE715EE865900C2936F /* FMAppDelegate.m */; };
+		5BA315DF15EE8EE800FAB508 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5BA315DE15EE8EE800FAB508 /* FacebookSDKResources.bundle */; };
+		5BA315E115EE8EEE00FAB508 /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5BA315E015EE8EEE00FAB508 /* FBUserSettingsViewResources.bundle */; };
+		5BA315E315EE8EFA00FAB508 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA315E215EE8EFA00FAB508 /* FacebookSDK.framework */; };
 		846809C1158F85A100F2DBB9 /* action-eating.png in Resources */ = {isa = PBXBuildFile; fileRef = 846809BD158F85A100F2DBB9 /* action-eating.png */; };
 		846809C2158F85A100F2DBB9 /* action-location.png in Resources */ = {isa = PBXBuildFile; fileRef = 846809BE158F85A100F2DBB9 /* action-location.png */; };
 		846809C3158F85A100F2DBB9 /* action-people.png in Resources */ = {isa = PBXBuildFile; fileRef = 846809BF158F85A100F2DBB9 /* action-people.png */; };
 		846809C4158F85A100F2DBB9 /* action-photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 846809C0158F85A100F2DBB9 /* action-photo.png */; };
 		84A5DA9615A68A3D00FE54AF /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A5DA9515A68A3D00FE54AF /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		8527EC6815C9DB3800660673 /* Scrumptious.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8527EC6A15C9DB3800660673 /* Scrumptious.strings */; };
-		8534B4DF15CC657900348ED2 /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8534B4DE15CC657900348ED2 /* FBUserSettingsViewResources.bundle */; };
 		856DC21A1577F105001FA6A6 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 856DC2171577F105001FA6A6 /* Icon-72.png */; };
 		856DC21B1577F105001FA6A6 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 856DC2181577F105001FA6A6 /* Icon.png */; };
 		856DC21C1577F105001FA6A6 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 856DC2191577F105001FA6A6 /* Icon@2x.png */; };
@@ -30,36 +31,34 @@
 		B9CD0A96150EBF5400560A93 /* FMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9CD0A94150EBF5400560A93 /* FMLoginViewController.m */; };
 		B9CD0A97150EBF5400560A93 /* FMLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9CD0A95150EBF5400560A93 /* FMLoginViewController.xib */; };
 		B9CD0A9A150EBFFB00560A93 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CD0A99150EBFFB00560A93 /* facebook.png */; };
-		DD55EAAF15AB9EDF000A64B8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD55EAAE15AB9EDF000A64B8 /* FacebookSDK.framework */; };
-		DD55EAB115ABA246000A64B8 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DD55EAB015ABA246000A64B8 /* FacebookSDKResources.bundle */; };
 		DDBF24B71590050600BAAB8F /* FMPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBF24B51590050600BAAB8F /* FMPhotoViewController.m */; };
 		DDBF24B81590050600BAAB8F /* FMPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDBF24B61590050600BAAB8F /* FMPhotoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5B734BE715EE865900C2936F /* FMAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMAppDelegate.m; path = scrumptious/FMAppDelegate.m; sourceTree = SOURCE_ROOT; };
+		5BA315DE15EE8EE800FAB508 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../../../../FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
+		5BA315E015EE8EEE00FAB508 /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBUserSettingsViewResources.bundle; path = ../../../../FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
+		5BA315E215EE8EFA00FAB508 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		846809BD158F85A100F2DBB9 /* action-eating.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-eating.png"; path = "scrumptious/images/action-eating.png"; sourceTree = SOURCE_ROOT; };
 		846809BE158F85A100F2DBB9 /* action-location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-location.png"; path = "scrumptious/images/action-location.png"; sourceTree = SOURCE_ROOT; };
 		846809BF158F85A100F2DBB9 /* action-people.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-people.png"; path = "scrumptious/images/action-people.png"; sourceTree = SOURCE_ROOT; };
 		846809C0158F85A100F2DBB9 /* action-photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-photo.png"; path = "scrumptious/images/action-photo.png"; sourceTree = SOURCE_ROOT; };
 		84A5DA9515A68A3D00FE54AF /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		8527EC6915C9DB3800660673 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Scrumptious.strings; sourceTree = "<group>"; };
-		8527EC6B15C9DB4A00660673 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Scrumptious.strings; sourceTree = "<group>"; };
-		8534B4DE15CC657900348ED2 /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBUserSettingsViewResources.bundle; path = ../../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
 		856DC2171577F105001FA6A6 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
 		856DC2181577F105001FA6A6 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
 		856DC2191577F105001FA6A6 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
 		8592BE3C15816CCC00056680 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		85954AE1155889A200FABA9A /* FMProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMProtocols.h; sourceTree = "<group>"; };
 		B9C1C35815129F0E008FA5D1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		B9CD0A6F150EA4DD00560A93 /* Scrumptious.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrumptious.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9CD0A6F150EA4DD00560A93 /* Find Me!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find Me!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9CD0A73150EA4DD00560A93 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B9CD0A75150EA4DD00560A93 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B9CD0A77150EA4DD00560A93 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		B9CD0A7B150EA4DD00560A93 /* Scrumptious-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Scrumptious-Info.plist"; sourceTree = "<group>"; };
+		B9CD0A7B150EA4DD00560A93 /* Find Me!-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Find Me!-Info.plist"; sourceTree = "<group>"; };
 		B9CD0A7D150EA4DD00560A93 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B9CD0A7F150EA4DD00560A93 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B9CD0A81150EA4DD00560A93 /* Scrumptious-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Scrumptious-Prefix.pch"; sourceTree = "<group>"; };
+		B9CD0A81150EA4DD00560A93 /* Find Me!-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Find Me!-Prefix.pch"; sourceTree = "<group>"; };
 		B9CD0A82150EA4DD00560A93 /* FMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMAppDelegate.h; sourceTree = "<group>"; };
 		B9CD0A85150EA4DD00560A93 /* FMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMViewController.h; sourceTree = "<group>"; };
 		B9CD0A86150EA4DD00560A93 /* FMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMViewController.m; sourceTree = "<group>"; };
@@ -68,8 +67,6 @@
 		B9CD0A94150EBF5400560A93 /* FMLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLoginViewController.m; sourceTree = "<group>"; };
 		B9CD0A95150EBF5400560A93 /* FMLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMLoginViewController.xib; sourceTree = "<group>"; };
 		B9CD0A99150EBFFB00560A93 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebook.png; path = images/facebook.png; sourceTree = "<group>"; };
-		DD55EAAE15AB9EDF000A64B8 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
-		DD55EAB015ABA246000A64B8 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
 		DDBF24B41590050600BAAB8F /* FMPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMPhotoViewController.h; path = scrumptious/FMPhotoViewController.h; sourceTree = SOURCE_ROOT; };
 		DDBF24B51590050600BAAB8F /* FMPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMPhotoViewController.m; path = scrumptious/FMPhotoViewController.m; sourceTree = SOURCE_ROOT; };
 		DDBF24B61590050600BAAB8F /* FMPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FMPhotoViewController.xib; path = scrumptious/FMPhotoViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -86,17 +83,43 @@
 				B9CD0A76150EA4DD00560A93 /* Foundation.framework in Frameworks */,
 				B9CD0A78150EA4DD00560A93 /* CoreGraphics.framework in Frameworks */,
 				8592BE3D15816CCC00056680 /* AddressBook.framework in Frameworks */,
-				DD55EAAF15AB9EDF000A64B8 /* FacebookSDK.framework in Frameworks */,
+				5BA315E315EE8EFA00FAB508 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B676D1615EE8D580057C192 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				85954AE1155889A200FABA9A /* FMProtocols.h */,
+				B9CD0A82150EA4DD00560A93 /* FMAppDelegate.h */,
+				5B734BE715EE865900C2936F /* FMAppDelegate.m */,
+				B9CD0A93150EBF5400560A93 /* FMLoginViewController.h */,
+				B9CD0A94150EBF5400560A93 /* FMLoginViewController.m */,
+				B9CD0A85150EA4DD00560A93 /* FMViewController.h */,
+				B9CD0A86150EA4DD00560A93 /* FMViewController.m */,
+				DDBF24B41590050600BAAB8F /* FMPhotoViewController.h */,
+				DDBF24B51590050600BAAB8F /* FMPhotoViewController.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		5B676D1715EE8D610057C192 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				B9CD0A95150EBF5400560A93 /* FMLoginViewController.xib */,
+				B9CD0A8B150EA4DE00560A93 /* FMViewController.xib */,
+				DDBF24B61590050600BAAB8F /* FMPhotoViewController.xib */,
+			);
+			name = Interface;
+			sourceTree = "<group>";
+		};
 		B9CD0A64150EA4DD00560A93 = {
 			isa = PBXGroup;
 			children = (
-				B9CD0A79150EA4DD00560A93 /* Scrumptious */,
+				B9CD0A79150EA4DD00560A93 /* Find Me! */,
 				B9CD0A72150EA4DD00560A93 /* Frameworks */,
 				B9CD0A70150EA4DD00560A93 /* Products */,
 			);
@@ -105,7 +128,7 @@
 		B9CD0A70150EA4DD00560A93 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B9CD0A6F150EA4DD00560A93 /* Scrumptious.app */,
+				B9CD0A6F150EA4DD00560A93 /* Find Me!.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,9 +136,9 @@
 		B9CD0A72150EA4DD00560A93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8534B4DE15CC657900348ED2 /* FBUserSettingsViewResources.bundle */,
-				DD55EAB015ABA246000A64B8 /* FacebookSDKResources.bundle */,
-				DD55EAAE15AB9EDF000A64B8 /* FacebookSDK.framework */,
+				5BA315DE15EE8EE800FAB508 /* FacebookSDKResources.bundle */,
+				5BA315E015EE8EEE00FAB508 /* FBUserSettingsViewResources.bundle */,
+				5BA315E215EE8EFA00FAB508 /* FacebookSDK.framework */,
 				84A5DA9515A68A3D00FE54AF /* Accounts.framework */,
 				8592BE3C15816CCC00056680 /* AddressBook.framework */,
 				B9C1C35815129F0E008FA5D1 /* CoreLocation.framework */,
@@ -126,35 +149,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B9CD0A79150EA4DD00560A93 /* Scrumptious */ = {
+		B9CD0A79150EA4DD00560A93 /* Find Me! */ = {
 			isa = PBXGroup;
 			children = (
 				B9CD0A98150EBFBD00560A93 /* images */,
 				B9CD0A7A150EA4DD00560A93 /* Supporting Files */,
-				B9CD0A82150EA4DD00560A93 /* FMAppDelegate.h */,
-				5B734BE715EE865900C2936F /* FMAppDelegate.m */,
-				B9CD0A93150EBF5400560A93 /* FMLoginViewController.h */,
-				B9CD0A94150EBF5400560A93 /* FMLoginViewController.m */,
-				B9CD0A95150EBF5400560A93 /* FMLoginViewController.xib */,
-				B9CD0A85150EA4DD00560A93 /* FMViewController.h */,
-				B9CD0A86150EA4DD00560A93 /* FMViewController.m */,
-				B9CD0A8B150EA4DE00560A93 /* FMViewController.xib */,
-				DDBF24B41590050600BAAB8F /* FMPhotoViewController.h */,
-				DDBF24B51590050600BAAB8F /* FMPhotoViewController.m */,
-				DDBF24B61590050600BAAB8F /* FMPhotoViewController.xib */,
-				85954AE1155889A200FABA9A /* FMProtocols.h */,
-				8527EC6A15C9DB3800660673 /* Scrumptious.strings */,
+				5B676D1615EE8D580057C192 /* Classes */,
+				5B676D1715EE8D610057C192 /* Interface */,
 			);
+			name = "Find Me!";
 			path = Scrumptious;
 			sourceTree = "<group>";
 		};
 		B9CD0A7A150EA4DD00560A93 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B9CD0A7B150EA4DD00560A93 /* Scrumptious-Info.plist */,
+				B9CD0A7B150EA4DD00560A93 /* Find Me!-Info.plist */,
 				B9CD0A7C150EA4DD00560A93 /* InfoPlist.strings */,
 				B9CD0A7F150EA4DD00560A93 /* main.m */,
-				B9CD0A81150EA4DD00560A93 /* Scrumptious-Prefix.pch */,
+				B9CD0A81150EA4DD00560A93 /* Find Me!-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -177,9 +190,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B9CD0A6E150EA4DD00560A93 /* Scrumptious */ = {
+		B9CD0A6E150EA4DD00560A93 /* Find Me! */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B9CD0A90150EA4DE00560A93 /* Build configuration list for PBXNativeTarget "Scrumptious" */;
+			buildConfigurationList = B9CD0A90150EA4DE00560A93 /* Build configuration list for PBXNativeTarget "Find Me!" */;
 			buildPhases = (
 				B9CD0A6B150EA4DD00560A93 /* Sources */,
 				B9CD0A6C150EA4DD00560A93 /* Frameworks */,
@@ -189,9 +202,9 @@
 			);
 			dependencies = (
 			);
-			name = Scrumptious;
+			name = "Find Me!";
 			productName = Scrumptious;
-			productReference = B9CD0A6F150EA4DD00560A93 /* Scrumptious.app */;
+			productReference = B9CD0A6F150EA4DD00560A93 /* Find Me!.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -200,9 +213,10 @@
 		B9CD0A66150EA4DD00560A93 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = FM;
 				LastUpgradeCheck = 0430;
 			};
-			buildConfigurationList = B9CD0A69150EA4DD00560A93 /* Build configuration list for PBXProject "Scrumptious" */;
+			buildConfigurationList = B9CD0A69150EA4DD00560A93 /* Build configuration list for PBXProject "Find Me!" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -215,7 +229,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B9CD0A6E150EA4DD00560A93 /* Scrumptious */,
+				B9CD0A6E150EA4DD00560A93 /* Find Me! */,
 			);
 		};
 /* End PBXProject section */
@@ -237,9 +251,8 @@
 				846809C3158F85A100F2DBB9 /* action-people.png in Resources */,
 				846809C4158F85A100F2DBB9 /* action-photo.png in Resources */,
 				DDBF24B81590050600BAAB8F /* FMPhotoViewController.xib in Resources */,
-				DD55EAB115ABA246000A64B8 /* FacebookSDKResources.bundle in Resources */,
-				8527EC6815C9DB3800660673 /* Scrumptious.strings in Resources */,
-				8534B4DF15CC657900348ED2 /* FBUserSettingsViewResources.bundle in Resources */,
+				5BA315DF15EE8EE800FAB508 /* FacebookSDKResources.bundle in Resources */,
+				5BA315E115EE8EEE00FAB508 /* FBUserSettingsViewResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,16 +274,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8527EC6A15C9DB3800660673 /* Scrumptious.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8527EC6915C9DB3800660673 /* en */,
-				8527EC6B15C9DB4A00660673 /* he */,
-			);
-			name = Scrumptious.strings;
-			path = scrumptious;
-			sourceTree = SOURCE_ROOT;
-		};
 		B9CD0A7C150EA4DD00560A93 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -338,19 +341,21 @@
 		B9CD0A91150EA4DE00560A93 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../Documents/FacebookSDK\"",
+					"\"$(SRCROOT)/../../../../FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Scrumptious/Scrumptious-Prefix.pch";
+				GCC_PREFIX_HEADER = "Scrumptious/Find Me!-Prefix.pch";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				INFOPLIST_FILE = "Scrumptious/Scrumptious-Info.plist";
+				INFOPLIST_FILE = "Scrumptious/Find Me!-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-lsqlite3.0";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Find Me!";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -360,18 +365,20 @@
 		B9CD0A92150EA4DE00560A93 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../Documents/FacebookSDK\"",
+					"\"$(SRCROOT)/../../../../FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Scrumptious/Scrumptious-Prefix.pch";
+				GCC_PREFIX_HEADER = "Scrumptious/Find Me!-Prefix.pch";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				INFOPLIST_FILE = "Scrumptious/Scrumptious-Info.plist";
+				INFOPLIST_FILE = "Scrumptious/Find Me!-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-lsqlite3.0";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Find Me!";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -380,7 +387,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B9CD0A69150EA4DD00560A93 /* Build configuration list for PBXProject "Scrumptious" */ = {
+		B9CD0A69150EA4DD00560A93 /* Build configuration list for PBXProject "Find Me!" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B9CD0A8E150EA4DE00560A93 /* Debug */,
@@ -389,7 +396,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B9CD0A90150EA4DE00560A93 /* Build configuration list for PBXNativeTarget "Scrumptious" */ = {
+		B9CD0A90150EA4DE00560A93 /* Build configuration list for PBXNativeTarget "Find Me!" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B9CD0A91150EA4DE00560A93 /* Debug */,

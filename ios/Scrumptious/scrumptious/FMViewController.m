@@ -371,7 +371,13 @@
                  self.userNameLabel.text = user.name;
                  self.userProfileImage.profileID = [user objectForKey:@"id"];
              }
-         }];   
+         }];
+        [[FBRequest requestForGraphPath:@"me/events"] startWithCompletionHandler:
+         ^(FBRequestConnection *connection, NSDictionary<FBGraphObject> *result, NSError *error) {
+             if (!error) {
+                 NSLog(@"%@",result);
+             }
+         }];
     }
 }
 
@@ -385,7 +391,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Scrumptious";
+    self.title = @"Find Me!";
 
     // Get the CLLocationManager going.
     self.locationManager = [[CLLocationManager alloc] init];
