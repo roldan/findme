@@ -19,9 +19,11 @@
 
             <img id="fb-connect" src="/images/fb_connect.png" />
 
+            <div style="display: none;" id="fb_user_data">
+            </div>
+
             <div style="display: none;" id="fb_events">
                 <ul>
-
                 </ul>
             </div>
 
@@ -53,6 +55,9 @@
                         // Seteo variables
                         uid = response.authResponse.userID;
                         accessToken = response.authResponse.accessToken;
+                        
+                        // Cargo datos de usuario (nombre y perfil)
+                        loadUserData(uid);
                         
                         // Cargo eventos del usuario
                         loadUserEvents(uid);
@@ -103,11 +108,24 @@
             });
             
             /*
+             * Load user data
+             */
+            function loadUserData(uid)
+            {
+                $("#fb_user_data")
+                    .append("<img width='40' src='https://graph.facebook.com/" + uid + "/picture' />")
+                    .append("<h3>" + response.name + "</h3>");
+                
+                $("#fb_user_data").show();
+            }
+            
+            
+            /*
              * Load user events
              */
             function loadUserEvents(uid)
             {
-                FB.api('/' + uid + '/events', function(response) {
+                FB.api('/' + uid + '/events?since=today&until=tomorrow', function(response) {
                     var events = response.data;
                     
                     $.each(events, function(index, value)
