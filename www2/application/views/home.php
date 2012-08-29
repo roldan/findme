@@ -189,9 +189,11 @@
                         {
                             console.log(value.id + "  " + uid);
                             
+                            console.log(data);
                             
                             if(data.exists == true)
                             {
+                                console.log("entro");
                                 actualAttendings.push(data.id);
                             }
                         });
