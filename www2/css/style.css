@@ -14,3 +14,9 @@
 #fb_events ul li {
     padding-bottom: 10px;
 }
+
+#fb_user_data h4 {
+    position: relative;
+    top: -62px;
+    left: 59px; 
+}
