@@ -424,6 +424,15 @@ const NSString *currentId = nil;
     [self.menuTableView reloadData];
 }
 
+- (void) request:(HTTPRequest *)request receivedData:(NSData *)data {
+    NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+}
+
+- (void) request:(HTTPRequest *)request initialized:(NSURL *)url {
+    NSLog(@"%@",[[NSString alloc] initWithData:[request getResponseData] encoding:NSUTF8StringEncoding]);
+    NSLog(@"%@",)
+}
+
 // FBSample logic
 // Displays the user's name and profile picture so they are aware of the Facebook
 // identity they are logged in as.
@@ -434,6 +443,23 @@ const NSString *currentId = nil;
              if (!error) {
                  self.userNameLabel.text = user.name;
                  self.userProfileImage.profileID = [user objectForKey:@"id"];
+                 
+                 HTTPRequest *request = [[HTTPRequest alloc] initWithURL:[NSURL URLWithString:@"http://findme.developmentserver.com.ar/users/create"] timeout:60.0 method:@"POST"];
+                 [request setDelegate:self];
+//                 [request setH]
+                 NSString *body = [NSString stringWithFormat:@"fbId=%@",[user objectForKey:@"id" ]];
+                 NSLog(@"%@",body);
+                 [request setBodyContent:[body dataUsingEncoding:NSUTF8StringEncoding ]];
+                 
+                 [request start];
+                 
+//                 __unsafe_unretained ASIFormDataRequest *request= [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://172.16.1.216/findme/user/create"]];
+//                 [request setRequestMethod:@"GET"];
+//                 [request setPostValue:[user objectForKey:@"id"] forKey:@"id"];
+//                 [request setCompletionBlock:^{
+//                     NSLog(@"%@",[request responseString]);
+//                 }];
+//                 [request startAsynchronous];
              }
          }];
         [[FBRequest requestForGraphPath:@"me/events"] startWithCompletionHandler:

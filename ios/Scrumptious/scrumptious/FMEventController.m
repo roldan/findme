@@ -9,7 +9,7 @@
 #import "FMEventController.h"
 #import "FMViewController.h"
 #import "FMFriend.h"
-#import "ASIHTTPRequest.h"
+//#import "ASIHTTPRequest.h"
 #import <AddressBook/AddressBook.h>
 
 @interface FMEventController ()
@@ -69,6 +69,28 @@
              
              [self.attending addObject:friend];
          }
+         
+         FMFriend *friend = [self.attending objectAtIndex:arc4random() % self.attending.count];
+         
+         NSLog(@"%@",friend.id);
+         NSLog(@"%@",friend.fullName);
+         
+         FBProfilePictureView *pView = [[FBProfilePictureView alloc] initWithProfileID:friend.id pictureCropping:FBProfilePictureCroppingOriginal];
+         
+         pView.frame = CGRectMake(100, 100, 160, 160);
+         
+         [self.view addSubview:pView];
+         
+         UILabel *label = [[UILabel alloc ] initWithFrame:CGRectMake(100, 280, 200, 80)];
+         label.text = friend.fullName;
+         [self.view addSubview:label];
+         
+         [self.myTableView removeFromSuperview];
+         
+//         ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:@"http://172.16.216:8080/findme/user/check"]];
+//         [request setRequestMethod:@"GET"];
+//         [request setPostValue:friend.id forKey:@"FBid"];
+//         [request setDelegate:self];
          
          NSLog(@"%d",self.attending.count);
          
