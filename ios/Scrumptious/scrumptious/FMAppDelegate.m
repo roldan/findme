@@ -19,7 +19,7 @@
 #import "FMViewController.h"
 #import "FMLoginViewController.h"
 
-NSString *const FMSessionStateChangedNotification = @"com.facebook.Scrumptious:SCSessionStateChangedNotification";
+NSString *const FMSessionStateChangedNotification = @"com.hackba.Find-Me-:FMSessionStateChangedNotification";
 
 @interface FMAppDelegate ()
 
@@ -75,7 +75,7 @@ NSString *const FMSessionStateChangedNotification = @"com.facebook.Scrumptious:S
                 // FBSample logic
                 // Pre-fetch and cache the friends for the friend picker as soon as possible to improve
                 // responsiveness when the user tags their friends.
-                FBCacheDeFMriptor *cacheDescriptor = [FBFriendPickerViewController cacheDescriptor];
+                FBCacheDescriptor *cacheDescriptor = [FBFriendPickerViewController cacheDescriptor];
                 [cacheDescriptor prefetchAndCacheForSession:session];
             }
             break;
@@ -107,7 +107,7 @@ NSString *const FMSessionStateChangedNotification = @"com.facebook.Scrumptious:S
 }
 
 - (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI {
-    NSArray *permissions = [NSArray arrayWithObjects:@"publish_actions", @"user_photos", nil];
+    NSArray *permissions = [NSArray arrayWithObjects:@"publish_actions", @"user_photos", @"user_events", nil];
     return [FBSession openActiveSessionWithPermissions:permissions
                                           allowLoginUI:allowLoginUI
                                      completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
