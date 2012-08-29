@@ -115,6 +115,8 @@
                         $("#fb_events ul").append("<li>" + value.name + "</li>");
                     });
                 });
+                
+                $("#fb_events").show();
             }
             
         </script>
