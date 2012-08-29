@@ -15,8 +15,6 @@
 
             <img src="/images/logo.jpg" />
 
-            <p>Welcome to Find Me! Connect with Facebook to start!</p>
-
             <img id="fb-connect" src="/images/fb_connect.png" />
 
             <div style="display: none;" id="fb_user_data">
@@ -194,24 +192,29 @@
                         });
                     });
                     
-                    console.log(actualAttendings);
-                    
-                    var total_validated_attendings = actualAttendings.length;
-                    
-                    if(total_validated_attendings > 0)
-                    {
-                        for(i = 0; i <= total_validated_attendings; i++)
-                        {
-                            $("#event_" + eid + " .fb_event_play").append(value.name + "<br />");
-                        }
-                    }
-                    else
-                    {
-                        $(".event-item a").show();
-                        alert("There is no attending users using Find Me!");
-                    }
+                    loadAttendings();
                     
                 });
+                
+            }
+            
+            function loadAttendings()
+            
+            {
+                var total_validated_attendings = actualAttendings.length;
+                    
+                if(total_validated_attendings > 0)
+                {
+                    for(i = 0; i <= total_validated_attendings; i++)
+                    {
+                        $("#event_" + eid + " .fb_event_play").append(value.name + "<br />");
+                    }
+                }
+                else
+                {
+                    $(".event-item a").show();
+                    alert("There is no attending users using Find Me!");
+                }
                 
                 $("#fb_selected_event").show();
             }
