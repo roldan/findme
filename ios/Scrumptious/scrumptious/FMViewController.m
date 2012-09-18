@@ -430,7 +430,7 @@ const NSString *currentId = nil;
 
 - (void) request:(HTTPRequest *)request initialized:(NSURL *)url {
     NSLog(@"%@",[[NSString alloc] initWithData:[request getResponseData] encoding:NSUTF8StringEncoding]);
-    NSLog(@"%@",)
+//    NSLog(@"%@",)
 }
 
 // FBSample logic
