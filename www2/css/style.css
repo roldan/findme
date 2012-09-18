@@ -1,0 +1,22 @@
+#fb-connect {
+    cursor: pointer;
+}
+
+#fb_events ul {
+    list-style: none;
+}
+
+
+#fb_events ul li img {
+    margin-right: 10px
+}
+
+#fb_events ul li {
+    padding-bottom: 10px;
+}
+
+#fb_user_data h4 {
+    position: relative;
+    top: -62px;
+    left: 59px; 
+}
